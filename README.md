@@ -15,7 +15,7 @@ This project is built with:
 ## Live Demo
 
 Check out the live version of my portfolio here:  
-[My Portfolio Website](https://www.seusite.com)  
+[My Portfolio Website](https://jhonatanluizc.github.io/portfolio/)  
 
 ## How to Run Locally
 
