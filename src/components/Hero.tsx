@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import profileImg from "@/assets/images/profile.jpg";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -33,7 +34,7 @@ const Hero = () => {
         <div className="mb-8 relative inline-block">
           <div className="w-48 h-48 mx-auto rounded-full border-4 border-neon-aqua neon-border overflow-hidden">
             <img
-              src="../src/assets/images/profile.jpg"
+              src={profileImg}
               alt="Jhonatan Luiz Chagas"
               className="w-full h-full object-cover"
             />
@@ -81,7 +82,7 @@ const Hero = () => {
             <span className="text-dev-yellow">{'}'}</span>
           </div>
         </div>
-      
+
         <p className="text-xl md:text-2xl text-gray-300 mb-8 font-fira">
           Desenvolvo soluções com clareza, criatividade e atenção ao que realmente importa: o agora.
         </p>
