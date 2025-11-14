@@ -1,16 +1,13 @@
 
-import { useState, useEffect } from 'react';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Experience from '../components/Experience';
-import Navigation from '../components/Navigation';
-import EasterEgg from '../components/EasterEgg';
-// import Projects from '../components/Projects';
-// import Education from '../components/Education';
-// import Contact from '../components/Contact';
+import About from '@/pages/Home/sections/About';
+import EasterEgg from '@/pages/Home/sections/EasterEgg';
+import Experience from '@/pages/Home/sections/Experience';
+import Hero from '@/pages/Home/sections/Hero';
+import Navigation from '@/pages/Home/sections/Navigation';
+import Skills from '@/pages/Home/sections/Skills';
+import { useEffect, useState } from 'react';
 
-const Index = () => {
+export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [konamiSequence, setKonamiSequence] = useState<string[]>([]);
 
@@ -45,5 +42,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;
