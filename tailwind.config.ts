@@ -58,6 +58,7 @@ export default {
 					aqua: '#00FFC6',
 					pink: '#FF2079',
 					blue: '#33C4FF',
+					pumpkin: '#FF6F00',
 				},
 				dev: {
 					blue: '#569CD6',

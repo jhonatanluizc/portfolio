@@ -150,7 +150,6 @@ const Experience = () => {
             <div className="text-xs font-fira text-gray-400">career_summary.json</div>
             <div className="w-16"></div>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="p-6 bg-dark-primary/50 rounded">
               <div className="text-4xl font-orbitron font-bold text-neon-aqua mb-3">5+</div>
@@ -158,9 +157,9 @@ const Experience = () => {
               <div className="text-xs text-gray-500 font-fira mt-2">Aprendizado Contínuo</div>
             </div>
             <div className="p-6 bg-dark-primary/50 rounded">
-              <div className="text-4xl font-orbitron font-bold text-neon-blue mb-3">10+</div>
-              <div className="text-gray-300 font-fira">Projetos Entregues</div>
-              <div className="text-xs text-gray-500 font-fira mt-2">Android, iOS e Web</div>
+              <div className="text-2xl font-orbitron font-bold text-neon-blue mb-3">Inteligência Artificial</div>
+              <div className="text-gray-300 font-fira">Automação & Eficiência</div>
+              <div className="text-xs text-gray-500 font-fira mt-2">Soluções inteligentes com IA para inovação e resultados</div>
             </div>
             <div className="p-6 bg-dark-primary/50 rounded">
               <div className="text-4xl font-orbitron font-bold text-neon-pink mb-3">100%</div>

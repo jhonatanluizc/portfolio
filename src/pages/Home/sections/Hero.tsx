@@ -43,7 +43,7 @@ const Hero = () => {
         </div>
 
         {/* Terminal Window */}
-        <div className="terminal-window max-w-3xl mx-auto mb-8 animate-fade-in">
+        <div className="terminal-window w-full max-w-full sm:max-w-3xl mx-auto mb-6 sm:mb-8 animate-fade-in text-xs xs:text-sm sm:text-base">
           <div className="terminal-header">
             <div className="terminal-dots">
               <div className="terminal-dot bg-red-500"></div>
@@ -53,7 +53,7 @@ const Hero = () => {
             <div className="text-xs font-fira text-gray-400">Index.js</div>
             <div className="w-16"></div>
           </div>
-          <div className="p-8 font-fira text-left">
+          <div className="p-3 sm:p-6 md:p-8 font-fira text-left overflow-x-auto">
             <span className="text-dev-blue">const </span>
             <span className="text-dev-moonlight">developer = </span>
             <span className="text-dev-yellow">{'{'}</span>

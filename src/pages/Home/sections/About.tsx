@@ -25,7 +25,6 @@ export default function About() {
               <div className="text-xs font-fira text-gray-400">README.md</div>
               <div className="w-16"></div>
             </div>
-
             <div className="space-y-6 font-fira text-gray-300 leading-relaxed">
               <p>
                 Sou <span className="text-neon-aqua font-semibold">Jhonatan</span>, Engenheiro de Software Sênior, atualmente atuando na{' '}

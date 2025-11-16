@@ -10,15 +10,17 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
-  const sequenceRef = useRef<string[]>([]);
+  const [sequence, setSequence] = useState<string[]>([]);
 
   const updateSequence = useCallback((key: string) => {
-    sequenceRef.current = [...sequenceRef.current, key].slice(-konamiCode.length);
-    if (sequenceRef.current.join(',') === konamiCode.join(',')) {
+    if (!konamiCode.includes(key)) return;
+    const newSequence = [...sequence, key].slice(-konamiCode.length);
+    setSequence(newSequence);
+    if (newSequence.join(',') === konamiCode.join(',')) {
       setShowEasterEgg(true);
-      sequenceRef.current = [];
+      setSequence([]);
     }
-  }, [konamiCode]);
+  }, [sequence, konamiCode]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -38,7 +40,7 @@ export default function Home() {
           <main className="relative z-10">
             <Navigation />
             <Hero />
-            <Kode onPress={keyHandler} />
+            <Kode onPress={keyHandler} sequence={sequence} />
             <About />
             <Skills />
             <Experience />

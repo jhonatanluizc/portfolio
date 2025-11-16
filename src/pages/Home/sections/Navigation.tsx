@@ -9,10 +9,7 @@ const Navigation = () => {
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'Sobre' },
     { id: 'skills', label: 'Tecnologias' },
-    { id: 'experience', label: 'Experiência' },
-    // { id: 'projects', label: 'Projects' },
-    // { id: 'education', label: 'Education' },
-    // { id: 'contact', label: 'Contact' },
+    { id: 'experience', label: 'Experiência' }
   ];
 
   useEffect(() => {
