@@ -27,9 +27,9 @@ export default function About() {
             </div>
             <div className="space-y-6 font-fira text-gray-300 leading-relaxed">
               <p>
-                Sou <span className="text-neon-aqua font-semibold">Jhonatan</span>, Engenheiro de Software Sênior, atualmente atuando na{' '}
+                Sou <span className="text-neon-aqua font-semibold">Jhonatan</span>, Engenheiro de Software Sênior com experiência em empresas como{' '}
                 <Link href="https://juntoscampus.com" text="Juntos Campus" className="text-neon-blue" />
-                {' '}e na{' '}
+                {' '}e{' '}
                 <Link href="https://www.usecorp.co" text="Usecorp" className="text-neon-blue" />
                 {', '}especializado em{' '}
                 <Link

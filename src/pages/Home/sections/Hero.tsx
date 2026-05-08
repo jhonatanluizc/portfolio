@@ -67,10 +67,6 @@ const Hero = () => {
                 <span className="text-dev-brown">'Engenheiro de Software Senior'</span>,
               </div>
               <div>
-                <span className="text-dev-bluelight mr-1">company:</span>
-                <span className="text-dev-brown">'Juntos Campus'</span>,
-              </div>
-              <div>
                 <span className="text-dev-bluelight mr-1">email:</span>
                 <span className="text-dev-brown">'jhonatan.sont@gmail.com'</span>,
               </div>
