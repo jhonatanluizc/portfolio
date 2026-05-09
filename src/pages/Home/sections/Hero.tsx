@@ -1,7 +1,7 @@
 
-import { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
 import profileImg from "@/assets/images/profile.jpg";
+import { Github, Linkedin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -19,7 +19,10 @@ const Hero = () => {
   }, [currentIndex, fullText]);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[100px]">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[100px]"
+    >
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div className="grid grid-cols-12 gap-1 h-full">
@@ -56,31 +59,26 @@ const Hero = () => {
           <div className="p-3 sm:p-6 md:p-8 font-fira text-left overflow-x-auto">
             <span className="text-dev-blue">const </span>
             <span className="text-dev-moonlight">developer = </span>
-            <span className="text-dev-yellow">{'{'}</span>
+            <span className="text-dev-yellow">{"{"}</span>
             <div className="ml-6 space-y-1">
-              <div>
-                <span className="text-dev-bluelight mr-1">name:</span>
-                <span className="text-dev-brown">'Jhonatan Luiz Chagas'</span>,
-              </div>
-              <div>
-                <span className="text-dev-bluelight mr-1">position:</span>
-                <span className="text-dev-brown">'Engenheiro de Software Senior'</span>,
-              </div>
-              <div>
-                <span className="text-dev-bluelight mr-1">email:</span>
-                <span className="text-dev-brown">'jhonatan.sont@gmail.com'</span>,
-              </div>
-              <div>
-                <span className="text-dev-bluelight mr-1">degree:</span>
-                <span className="text-dev-brown">'Analise e Desenvolvimento de Sistemas'</span>
-              </div>
+              {[
+                { n: "name", v: "Jhonatan Luiz Chagas" },
+                { n: "position", v: "Engenheiro de Software Senior" },
+                { n: "email", v: "jhonatan.sont@gmail.com" },
+                { n: "degree", v: "Análise e Desenvolvimento de Sistemas" },
+              ].map((item, i) => (
+                <div key={i}>
+                  <span className="text-dev-bluelight mr-1">{item.n}:</span>
+                  <span className="text-dev-brown">'{item.v}'</span>,
+                </div>
+              ))}
             </div>
-            <span className="text-dev-yellow">{'}'}</span>
+            <span className="text-dev-yellow">{"}"}</span>
           </div>
         </div>
-
         <p className="text-xl md:text-2xl text-gray-300 mb-8 font-fira">
-          Desenvolvo soluções com clareza, criatividade e atenção ao que realmente importa: o agora.
+          Transformo ideias em experiências digitais inovadoras, com código
+          limpo, criatividade e foco no que realmente importa: o agora.
         </p>
 
         {/* Social Links */}

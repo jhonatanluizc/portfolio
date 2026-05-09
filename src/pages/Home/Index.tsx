@@ -5,6 +5,11 @@ import Hero from '@/pages/Home/sections/Hero';
 import Kode from '@/pages/Home/sections/Kode';
 import Navigation from '@/pages/Home/sections/Navigation';
 import Skills from '@/pages/Home/sections/Skills';
+import Projects from '@/pages/Home/sections/Projects';
+import Education from '@/pages/Home/sections/Education';
+import Testimonials from '@/pages/Home/sections/Testimonials';
+import Contact from '@/pages/Home/sections/Contact';
+import Footer from '@/pages/Home/sections/Footer';
 import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function Home() {
@@ -44,6 +49,11 @@ export default function Home() {
             <About />
             <Skills />
             <Experience />
+            <Projects />
+            <Education />
+            <Testimonials />
+            <Contact />
+            <Footer />
           </main>
         )}
     </div>

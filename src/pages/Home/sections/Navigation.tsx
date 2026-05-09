@@ -9,7 +9,11 @@ const Navigation = () => {
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'Sobre' },
     { id: 'skills', label: 'Tecnologias' },
-    { id: 'experience', label: 'Experiência' }
+    { id: 'experience', label: 'Experiência' },
+    { id: 'projects', label: 'Projetos' },
+    { id: 'education', label: 'Educação' },
+    { id: 'testimonials', label: 'Referências' },
+    { id: 'contact', label: 'Contato' }
   ];
 
   useEffect(() => {
@@ -89,7 +93,7 @@ const Navigation = () => {
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
         <div className="bg-dark-secondary/90 backdrop-blur-md rounded-full px-6 py-3 border border-neon-aqua/30">
           <div className="flex items-center space-x-6">
-            {navItems.slice(0, 5).map((item) => (
+            {navItems.slice(0, 8).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}

@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home/Index";
 import NotFound from "@/pages/NotFound";
+import Snake from "@/pages/Snake";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -19,6 +20,7 @@ export default function App() {
         <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/snake" element={<Snake />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
