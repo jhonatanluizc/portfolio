@@ -2,43 +2,42 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
-
-     {
+    {
       id: 1,
       title: 'Apps Corporativos Usecorp',
       description: 'Desenvolvimento e manutenção de aplicativos móveis corporativos com foco em produtividade, disponíveis nas lojas Google Play e App Store.',
-      technologies: ['React Native', 'JavaScript', 'Android Studio', 'Xcode', 'Firebase'],
-      image: '/assets/images/usecorp-app.png',
+      technologies: ['React Native', 'JavaScript', 'Android Studio', 'Xcode', 'Firebase', 'OneSignal'],
+      image: 'usecorp-app.png',
       gradient: 'from-neon-pink to-neon-aqua',
-      platforms: ['iOS', 'Android']
+      platforms: ['iOS', 'Android'],
+      links: [
+        { href: 'https://play.google.com/store/apps/details?id=juntos.campus.usecorp', title: 'Google Play' },
+        { href: 'https://apps.apple.com/br/app/usecorp/id1578721727', title: 'App Store' }
+      ]
     },
     {
       id: 2,
-      title: 'Usecorp app',
-      description: 'Aplicativo mobile desenvolvido em React Native para gerenciamento educacional, com funcionalidades de acompanhamento acadêmico, notificações push e integração com sistemas internos.',
-      technologies: ['React Native', 'TypeScript', 'REST API', 'Firebase', 'OneSignal'],
-      image: '/assets/images/usecorp-app.png',
-      gradient: 'from-neon-aqua to-neon-blue',
-      platforms: ['iOS', 'Android']
+      title: 'Plataforma Usecorp',
+      description: 'Desenvolvimento de módulos, landing pages, automações, blog, manutenção e integrações entre sistemas, proporcionando soluções completas e escaláveis para diferentes demandas corporativas.',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'SQL', 'Webflow', 'C#', '.NET', 'Entity Framework'],
+      image: 'usecorp-site.png',
+      gradient: 'from-neon-blue to-neon-pink',
+      platforms: ['Web', 'APIs'],
+      links: [
+        { href: 'https://www.usecorp.co', title: 'Website' },
+      ]
     },
     {
       id: 3,
-      title: 'Sistema Backend .NET',
-      description: 'Desenvolvimento de APIs REST escaláveis em .NET/C# com arquitetura em microsserviços, integração com múltiplos sistemas e otimização de performance para alto volume de requisições.',
-      technologies: ['.NET', 'C#', 'SQL Server', 'REST API', 'Microservices'],
-      image: '/assets/images/usecorp-app.png',
+      title: 'Juntos Campus',
+      description: 'Desenvolvimento de APIs REST, websites responsivos, programas internos em C#, algoritmos customizados e soluções integradas, otimizando processos e garantindo escalabilidade.',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'C#', 'Kotlin', 'Python'],
+      image: 'juntos-campus.png',
       gradient: 'from-neon-blue to-neon-pink',
-      platforms: ['Backend']
-    },
-   
-    {
-      id: 4,
-      title: 'Landing Pages Webflow',
-      description: 'Criação de páginas responsivas e otimizadas para campanhas e conversão, utilizando Webflow com integração de analytics e formulários.',
-      technologies: ['Webflow', 'HTML', 'CSS', 'JavaScript', 'SEO'],
-      image: '/assets/images/usecorp-app.png',
-      gradient: 'from-neon-aqua via-neon-pink to-neon-blue',
-      platforms: ['Web']
+      platforms: ['Web', 'Desktop'],
+      links: [
+        { href: 'https://www.juntoscampus.com/', title: 'Website' },
+      ]
     }
   ];
 
@@ -55,7 +54,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-3">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -75,19 +74,21 @@ const Projects = () => {
               </div>
 
               <div className="p-6">
-                {/* Project Image Placeholder */}
-                <div className={`w-full h-48 rounded mb-4 bg-gradient-to-br ${project.gradient} opacity-20 flex items-center justify-center`}>
-                  <div className="text-6xl opacity-50">💻</div>
+                {/* Project Image */}
+                <div className="w-full h-48 rounded mb-4 overflow-hidden relative">
+                  <img
+                    src={`/portfolio/src/assets/images/${project.image}`}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-10 pointer-events-none`}></div>
                 </div>
-
                 <h3 className="text-xl font-orbitron font-bold text-neon-aqua mb-3">
                   {project.title}
                 </h3>
-
                 <p className="text-gray-300 font-fira text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
-
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.platforms.map((platform) => (
@@ -100,23 +101,39 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={tech}
-                      className={`px-2 py-1 rounded text-xs font-fira ${
-                        techIndex % 3 === 0
-                          ? 'bg-neon-aqua/10 text-neon-aqua'
-                          : techIndex % 3 === 1
+                      className={`px-2 py-1 rounded text-xs font-fira ${techIndex % 3 === 0
+                        ? 'bg-neon-aqua/10 text-neon-aqua'
+                        : techIndex % 3 === 1
                           ? 'bg-neon-blue/10 text-neon-blue'
                           : 'bg-neon-pink/10 text-neon-pink'
-                      }`}
+                        }`}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
+
+                {/* Project Links */}
+                {project.links && project.links.length > 0 && (
+                  <div className="flex gap-3 pt-4 border-t border-gray-700/50">
+                    {project.links.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-3 py-2 rounded bg-neon-aqua/10 hover:bg-neon-aqua/20 text-neon-aqua border border-neon-aqua/30 hover:border-neon-aqua transition-all text-xs font-fira"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>{link.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
