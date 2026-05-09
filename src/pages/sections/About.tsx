@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import { Code, Sparkles, Rocket, Zap, Heart, GraduationCap } from 'lucide-react';
+import { Code, Sparkles, Rocket, Zap, Heart, GraduationCap, X } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -207,22 +207,45 @@ export default function About() {
 
       {/* Modal - Card Expanded */}
       <Dialog open={!!selectedCard} onOpenChange={() => setSelectedCard(null)}>
-        <DialogContent className="max-w-[95vw] sm:max-w-xl md:max-w-2xl bg-dark-primary border-2 sm:border-4 border-neon-aqua/50 text-white">
+        <DialogContent className="max-w-[95vw] sm:max-w-xl md:max-w-2xl bg-[#0a0a0a] border-neon-aqua/30 text-white p-0 overflow-hidden max-h-[90vh] flex flex-col">
           {selectedCard && (
             <>
-              <div className={`absolute -top-1 -left-1 -right-1 h-1 sm:h-2 bg-gradient-to-r ${getRarityColor(selectedCard.rarity)}`}></div>
-              <DialogHeader className="relative">
-                <div className="flex items-center justify-between mb-4 gap-2 pt-2">
-                  <DialogTitle className="text-xl sm:text-2xl md:text-3xl font-orbitron font-bold text-white">
+              {/* Fixed Header */}
+              <div className="sticky top-0 z-50 bg-gradient-to-r from-dark-secondary to-dark-primary border-b border-neon-aqua/30 p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-neon-aqua"></div>
+                      <div className="w-3 h-3 rounded-full bg-neon-blue"></div>
+                      <div className="w-3 h-3 rounded-full bg-neon-pink"></div>
+                    </div>
+                    <div className="text-xs font-fira text-gray-400">
+                      {selectedCard.title.toLowerCase().replace(/\s+/g, '_')}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedCard(null)}
+                    className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  >
+                    <X className="h-4 w-4" />
+                    <span className="sr-only">Fechar</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Scrollable Content */}
+              <div className="overflow-y-auto flex-1 p-6">
+                <div className={`absolute -top-1 -left-1 -right-1 h-1 sm:h-2 bg-gradient-to-r ${getRarityColor(selectedCard.rarity)}`}></div>
+                <div className="flex items-center justify-between mb-4 gap-2">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-orbitron font-bold text-white">
                     {selectedCard.title}
-                  </DialogTitle>
+                  </h3>
                   <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded bg-${selectedCard.color}/20 text-${selectedCard.color} font-fira font-semibold text-xs sm:text-sm whitespace-nowrap`}>
                     {selectedCard.category}
                   </span>
                 </div>
-              </DialogHeader>
 
-              <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                 {/* Icon Display */}
                 <div className="flex justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-dark-secondary to-dark-primary rounded-lg relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10">
@@ -246,15 +269,6 @@ export default function About() {
                   </p>
                 </div>
 
-                {/* Rarity Badge */}
-                <div className="flex justify-center">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedCard(null)}
-                    className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${getRarityColor(selectedCard.rarity)} text-dark-primary font-orbitron font-bold text-xs sm:text-sm uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-neon-aqua/60 transition`}
-                  >
-                    Fechar
-                  </button>
                 </div>
               </div>
             </>

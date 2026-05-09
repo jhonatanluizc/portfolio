@@ -258,39 +258,64 @@ const Experience = () => {
 
       {/* Modal */}
       <Dialog open={!!selectedExperience} onOpenChange={() => setSelectedExperience(null)}>
-        <DialogContent className="max-w-3xl bg-dark-secondary border-neon-aqua/30 text-white max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <div className="flex items-start gap-4 mb-4">
-              <div className={`text-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'} p-4 rounded-lg bg-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'}/10`}>
-                {selectedExperience?.icon}
-              </div>
-              <div className="flex-1">
-                <DialogTitle className="text-2xl font-orbitron font-bold text-white mb-2">
-                  {selectedExperience?.title}
-                </DialogTitle>
-                <DialogDescription className="text-neon-aqua font-fira text-lg mb-2">
-                  {selectedExperience?.company}
-                </DialogDescription>
-                <div className="flex flex-wrap gap-4 text-sm text-gray-400 font-fira">
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    {selectedExperience?.location}
-                  </div>
-                  {selectedExperience?.duration && (
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {selectedExperience.duration}
+        <DialogContent className="max-w-3xl bg-[#0a0a0a] border-neon-aqua/30 text-white p-0 overflow-hidden max-h-[90vh] flex flex-col">
+          {selectedExperience && (
+            <>
+              {/* Fixed Header */}
+              <div className="sticky top-0 z-50 bg-gradient-to-r from-dark-secondary to-dark-primary border-b border-neon-aqua/30 p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-neon-aqua"></div>
+                      <div className="w-3 h-3 rounded-full bg-neon-blue"></div>
+                      <div className="w-3 h-3 rounded-full bg-neon-pink"></div>
                     </div>
-                  )}
-                  <span className={`px-3 py-1 rounded-full bg-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'}/20 text-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'} text-xs font-semibold`}>
-                    {selectedExperience ? getTypeLabel(selectedExperience.type) : ''}
-                  </span>
+                    <div className="text-xs font-fira text-gray-400">
+                      {selectedExperience.title.toLowerCase().replace(/\s+/g, '_')}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedExperience(null)}
+                    className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  >
+                    <X className="h-4 w-4" />
+                    <span className="sr-only">Fechar</span>
+                  </button>
                 </div>
               </div>
-            </div>
-          </DialogHeader>
 
-          <div className="space-y-6 mt-6">
+              {/* Scrollable Content */}
+              <div className="overflow-y-auto flex-1 p-6">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className={`text-${getTypeColor(selectedExperience.type)} p-4 rounded-lg bg-${getTypeColor(selectedExperience.type)}/10`}>
+                    {selectedExperience.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-orbitron font-bold text-white mb-2">
+                      {selectedExperience.title}
+                    </h3>
+                    <p className="text-neon-aqua font-fira text-lg mb-2">
+                      {selectedExperience.company}
+                    </p>
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-400 font-fira">
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {selectedExperience.location}
+                      </div>
+                      {selectedExperience.duration && (
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {selectedExperience.duration}
+                        </div>
+                      )}
+                      <span className={`px-3 py-1 rounded-full bg-${getTypeColor(selectedExperience.type)}/20 text-${getTypeColor(selectedExperience.type)} text-xs font-semibold`}>
+                        {getTypeLabel(selectedExperience.type)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
             <div>
               <h4 className="text-neon-blue font-fira font-semibold mb-3">Descrição:</h4>
               <p className="text-gray-300 font-fira leading-relaxed">
@@ -327,7 +352,10 @@ const Experience = () => {
                 </div>
               </div>
             )}
-          </div>
+                </div>
+              </div>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </section>
