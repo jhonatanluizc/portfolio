@@ -103,17 +103,65 @@ const Passions = () => {
                 </div>
             </div>
 
-            {/* Technologies Marquee */}
-            <div className="relative w-full overflow-hidden mt-8 py-4 border-y border-gray-800/50">
-                <div className="flex animate-marquee whitespace-nowrap">
-                    {[...technologies, ...technologies].map((tech, index) => (
-                        <span
-                            key={index}
-                            className="mx-6 text-lg font-fira text-neon-pink/80 hover:text-neon-pink transition-colors"
-                        >
-                            {tech}
-                        </span>
-                    ))}
+            {/* Technologies Marquee - Responsive Lines */}
+            <div className="relative w-full overflow-hidden mt-8 border-y border-gray-800/50">
+                {/* Desktop: Single Line */}
+                <div className="hidden md:block py-4 overflow-hidden">
+                    <div className="flex animate-marquee whitespace-nowrap">
+                        {[...technologies, ...technologies].map((tech, index) => (
+                            <span
+                                key={index}
+                                className="mx-6 text-lg font-fira text-neon-pink/80 hover:text-neon-pink transition-colors"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Mobile: 3 Lines */}
+                <div className="md:hidden">
+                    {/* Line 1 - Left to Right (starts at beginning) */}
+                    <div className="py-3 border-b border-gray-800/30 overflow-hidden">
+                        <div className="flex animate-marquee whitespace-nowrap">
+                            {[...technologies.slice(0), ...technologies.slice(0)].map((tech, index) => (
+                                <span
+                                    key={index}
+                                    className="mx-4 text-sm font-fira text-neon-aqua/80 hover:text-neon-aqua transition-colors"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Line 2 - Right to Left (starts at 1/3) */}
+                    <div className="py-3 border-b border-gray-800/30 overflow-hidden">
+                        <div className="flex animate-marquee-reverse whitespace-nowrap">
+                            {[...technologies.slice(9), ...technologies.slice(0, 9), ...technologies.slice(9), ...technologies.slice(0, 9)].map((tech, index) => (
+                                <span
+                                    key={index}
+                                    className="mx-4 text-sm font-fira text-neon-pink/80 hover:text-neon-pink transition-colors"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Line 3 - Left to Right (starts at 2/3) */}
+                    <div className="py-3 overflow-hidden">
+                        <div className="flex animate-marquee whitespace-nowrap">
+                            {[...technologies.slice(18), ...technologies.slice(0, 18), ...technologies.slice(18), ...technologies.slice(0, 18)].map((tech, index) => (
+                                <span
+                                    key={index}
+                                    className="mx-4 text-sm font-fira text-neon-blue/80 hover:text-neon-blue transition-colors"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

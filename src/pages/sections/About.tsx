@@ -212,7 +212,7 @@ export default function About() {
             <>
               <div className={`absolute -top-1 -left-1 -right-1 h-1 sm:h-2 bg-gradient-to-r ${getRarityColor(selectedCard.rarity)}`}></div>
               <DialogHeader className="relative">
-                <div className="flex items-center justify-between mb-4 gap-2">
+                <div className="flex items-center justify-between mb-4 gap-2 pt-2">
                   <DialogTitle className="text-xl sm:text-2xl md:text-3xl font-orbitron font-bold text-white">
                     {selectedCard.title}
                   </DialogTitle>
