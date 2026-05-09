@@ -71,14 +71,14 @@ const Passions = () => {
 
             {/* Section Content */}
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold leading-tight mb-12">
-                    <span className="gradient-text">Construindo soluções</span>
-                    <br />
-                    <span className="text-white">escaláveis e inovadoras.</span>
-                </h2>
-                <div className="mt-8 mb-12 flex gap-4">
-                    <div className="w-3 h-3 rounded-full bg-neon-pink animate-pulse"></div>
-                    <div className="w-3 h-3 rounded-full bg-neon-aqua animate-pulse delay-100"></div>
+
+                <div className="text-center mb-12 sm:mb-16">
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                        <span className="gradient-text">Construindo soluções</span>
+                        <br />
+                        <span className="text-white">escaláveis e inovadoras</span>
+                    </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-neon-aqua to-neon-pink mx-auto mb-4 sm:mb-6"></div>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     {passions.map((passion, index) => {

@@ -2,39 +2,41 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
-    {
+
+     {
       id: 1,
-      title: 'App Mobile Juntos Campus',
-      description: 'Aplicativo mobile desenvolvido em React Native para gerenciamento educacional, com funcionalidades de acompanhamento acadêmico, notificações push e integração com sistemas internos.',
-      technologies: ['React Native', 'TypeScript', 'REST API', 'Firebase', 'OneSignal'],
-      image: '',
-      gradient: 'from-neon-aqua to-neon-blue',
+      title: 'Apps Corporativos Usecorp',
+      description: 'Desenvolvimento e manutenção de aplicativos móveis corporativos com foco em produtividade, disponíveis nas lojas Google Play e App Store.',
+      technologies: ['React Native', 'JavaScript', 'Android Studio', 'Xcode', 'Firebase'],
+      image: '/assets/images/usecorp-app.png',
+      gradient: 'from-neon-pink to-neon-aqua',
       platforms: ['iOS', 'Android']
     },
     {
       id: 2,
-      title: 'Sistema Backend .NET',
-      description: 'Desenvolvimento de APIs REST escaláveis em .NET/C# com arquitetura em microsserviços, integração com múltiplos sistemas e otimização de performance para alto volume de requisições.',
-      technologies: ['.NET', 'C#', 'SQL Server', 'REST API', 'Microservices'],
-      image: '',
-      gradient: 'from-neon-blue to-neon-pink',
-      platforms: ['Backend']
+      title: 'Usecorp app',
+      description: 'Aplicativo mobile desenvolvido em React Native para gerenciamento educacional, com funcionalidades de acompanhamento acadêmico, notificações push e integração com sistemas internos.',
+      technologies: ['React Native', 'TypeScript', 'REST API', 'Firebase', 'OneSignal'],
+      image: '/assets/images/usecorp-app.png',
+      gradient: 'from-neon-aqua to-neon-blue',
+      platforms: ['iOS', 'Android']
     },
     {
       id: 3,
-      title: 'Apps Corporativos Usecorp',
-      description: 'Desenvolvimento e manutenção de aplicativos móveis corporativos com foco em produtividade, disponíveis nas lojas Google Play e App Store.',
-      technologies: ['React Native', 'JavaScript', 'Android Studio', 'Xcode', 'Firebase'],
-      image: '',
-      gradient: 'from-neon-pink to-neon-aqua',
-      platforms: ['iOS', 'Android']
+      title: 'Sistema Backend .NET',
+      description: 'Desenvolvimento de APIs REST escaláveis em .NET/C# com arquitetura em microsserviços, integração com múltiplos sistemas e otimização de performance para alto volume de requisições.',
+      technologies: ['.NET', 'C#', 'SQL Server', 'REST API', 'Microservices'],
+      image: '/assets/images/usecorp-app.png',
+      gradient: 'from-neon-blue to-neon-pink',
+      platforms: ['Backend']
     },
+   
     {
       id: 4,
       title: 'Landing Pages Webflow',
       description: 'Criação de páginas responsivas e otimizadas para campanhas e conversão, utilizando Webflow com integração de analytics e formulários.',
       technologies: ['Webflow', 'HTML', 'CSS', 'JavaScript', 'SEO'],
-      image: '',
+      image: '/assets/images/usecorp-app.png',
       gradient: 'from-neon-aqua via-neon-pink to-neon-blue',
       platforms: ['Web']
     }
