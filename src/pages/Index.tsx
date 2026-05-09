@@ -1,15 +1,15 @@
-import About from '@/pages/Home/sections/About';
-import EasterEgg from '@/pages/Home/sections/EasterEgg';
-import Experience from '@/pages/Home/sections/Experience';
-import Hero from '@/pages/Home/sections/Hero';
-import Kode from '@/pages/Home/sections/Kode';
-import Navigation from '@/pages/Home/sections/Navigation';
-import Skills from '@/pages/Home/sections/Skills';
-import Projects from '@/pages/Home/sections/Projects';
-import Education from '@/pages/Home/sections/Education';
-import Testimonials from '@/pages/Home/sections/Testimonials';
-import Contact from '@/pages/Home/sections/Contact';
-import Footer from '@/pages/Home/sections/Footer';
+import About from '@/pages/sections/About';
+import EasterEgg from '@/pages/sections/EasterEgg';
+import Experience from '@/pages/sections/Experience';
+import Hero from '@/pages/sections/Hero';
+import Kode from '@/pages/sections/Kode';
+import Navigation from '@/pages/sections/Navigation';
+import Skills from '@/pages/sections/Skills';
+import Projects from '@/pages/sections/Projects';
+import Education from '@/pages/sections/Education';
+import Testimonials from '@/pages/sections/Testimonials';
+import Contact from '@/pages/sections/Contact';
+import Footer from '@/pages/sections/Footer';
 import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function Home() {
