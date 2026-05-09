@@ -170,7 +170,7 @@ const Projects = () => {
                     <div className="space-y-4">
                       <div className="w-full h-64 rounded overflow-hidden relative border border-neon-aqua/20">
                         <img
-                          src={`/portfolio/src/assets/images/${selectedProjectData.image}`}
+                          src={`${selectedProjectData.image}`}
                           alt={selectedProjectData.title}
                           className="w-full h-full object-cover"
                         />
