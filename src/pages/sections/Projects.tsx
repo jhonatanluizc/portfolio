@@ -1,11 +1,13 @@
-import { ExternalLink, Github, Eye, X } from 'lucide-react';
-import { useState } from 'react';
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+  DialogContent
 } from "@/components/ui/dialog";
+import { ExternalLink, Eye, X } from 'lucide-react';
+import { useState } from 'react';
+
+import usecorpApp from '@/assets/images/usecorp-app.png';
+import usecorpSite from '@/assets/images/usecorp-site.png';
+import juntosCampus from '@/assets/images/juntos-campus.png';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -16,7 +18,7 @@ const Projects = () => {
       title: 'Apps Usecorp',
       description: 'Desenvolvimento e manutenção de aplicativos móveis corporativos com foco em produtividade, disponíveis nas lojas Google Play e App Store.',
       technologies: ['React Native', 'JavaScript', 'Android Studio', 'Xcode', 'Firebase', 'OneSignal'],
-      image: 'usecorp-app.png',
+      image: usecorpApp,
       gradient: 'from-neon-pink to-neon-aqua',
       platforms: ['iOS', 'Android'],
       links: [
@@ -29,7 +31,7 @@ const Projects = () => {
       title: 'Plataforma Usecorp',
       description: 'Desenvolvimento de módulos, landing pages, automações, blog, manutenção e integrações entre sistemas, proporcionando soluções completas e escaláveis para diferentes demandas corporativas.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'SQL', 'Webflow', 'C#', '.NET', 'Entity Framework'],
-      image: 'usecorp-site.png',
+      image: usecorpSite,
       gradient: 'from-neon-blue to-neon-pink',
       platforms: ['Web', 'APIs'],
       links: [
@@ -41,14 +43,13 @@ const Projects = () => {
       title: 'Juntos Campus',
       description: 'Desenvolvimento de APIs REST, websites responsivos, programas internos em C#, algoritmos customizados e soluções integradas, otimizando processos e garantindo escalabilidade.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'C#', 'Kotlin', 'Python'],
-      image: 'juntos-campus.png',
+      image: juntosCampus,
       gradient: 'from-neon-blue to-neon-pink',
       platforms: ['Web', 'Desktop'],
       links: [
         { href: 'https://www.juntoscampus.com/', title: 'Website' },
       ]
     }
-    
   ];
 
   const selectedProjectData = projects.find(p => p.id === selectedProject);
@@ -94,7 +95,7 @@ const Projects = () => {
                   {/* Item Image */}
                   <div className="relative w-full aspect-square overflow-hidden rounded">
                     <img
-                      src={`/portfolio/src/assets/images/${project.image}`}
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
                     />
