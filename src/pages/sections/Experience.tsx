@@ -1,174 +1,335 @@
+import { useState } from 'react';
+import { Briefcase, GraduationCap, Coffee, X, MapPin, Calendar } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+type ExperienceItem = {
+  id: number;
+  date: string;
+  title: string;
+  company: string;
+  location: string;
+  type: 'work' | 'education' | 'break';
+  duration?: string;
+  description: string;
+  achievements?: string[];
+  technologies?: string[];
+  icon: React.ReactNode;
+};
+
 const Experience = () => {
-  const experiences = [
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
+
+  const experiences: ExperienceItem[] = [
     {
       id: 1,
-      company: 'Juntos Campus',
-      role: 'Engenheiro de Software Senior',
-      period: '2020 - 2026',
-      location: 'Itanhandu, MG',
-      type: 'Full-time',
-      description: 'Atuação no ciclo completo de desenvolvimento de software, desde análise e arquitetura até entrega e manutenção. Liderança técnica em projetos móveis e web, com foco em performance, escalabilidade e boas práticas de engenharia. Desenvolvimento de aplicações mobile com React Native e backend em .NET.',
-      achievements: [
-        'Publicação de aplicativos na App Store e Google Play com Xcode e Android Studio',
-        'Arquitetura escalável utilizando .NET e microsserviços',
-        'Integrações robustas com APIs REST externas e internas',
-        'Criação de páginas responsivas no Webflow para campanhas e landing pages',
-        'Refatoração de código legado com foco em estabilidade e desempenho'
-      ],
-      technologies: ['React Native', '.NET', 'C#', 'Webflow', 'Android Studio', 'Xcode', 'Google Play Console', 'App Store', 'SQL Server']
+      date: 'Mai, 2026',
+      title: 'Pausa na carreira',
+      company: 'Desenvolvimento profissional',
+      location: 'Piquete, São Paulo, Brasil',
+      type: 'break',
+      duration: '1 mês',
+      description: 'Período de descanso e planejamento profissional.',
+      icon: <Coffee className="w-6 h-6" />
     },
     {
       id: 2,
-      company: 'Usecorp',
-      role: 'Engenheiro de Software Senior',
-      period: '2021 - 2026',
-      location: 'São Paulo, SP',
-      type: 'Full-time',
-      description: 'Responsável pelo desenvolvimento e manutenção de sistemas corporativos, aplicativos Android e iOS. Atuação com foco em backend utilizando .NET e C#, integração de APIs, publicação e manutenção de aplicativos nas lojas Google Play e App Store. Participação em decisões técnicas e melhoria contínua de performance e segurança das aplicações.',
+      date: 'Dez, 2023',
+      title: 'Software Engineer III',
+      company: 'Juntos Campus',
+      location: 'Itanhandu, Minas Gerais, Brasil',
+      type: 'work',
+      duration: 'Mai 2023 - Abr 2026 · 3 anos',
+      description: 'Arquitetura e desenvolvimento de aplicativos escaláveis e de alta disponibilidade. Liderança técnica em projetos complexos.',
       achievements: [
-        'Manutenção e publicação de aplicativos Android na Google Play utilizando Android Studio',
-        'Manutenção e publicação de aplicativos iOS na App Store utilizando Xcode',
-        'Desenvolvimento de sistemas backend em .NET e C#',
-        'Integrações complexas com APIs REST internas e externas'
+        'Arquitetura e desenvolvimento de aplicativos em React Native',
+        'Desenvolvimento escalável e de alta disponibilidade',
+        'Design e arquitetura de sistemas de software',
+        'Implementação de boas práticas de desenvolvimento de software',
+        'Liderança técnica em projetos complexos',
+        'Otimização de desempenho e segurança de software'
       ],
-      technologies: ['React Native', '.NET', 'C#', 'Android Studio', 'Xcode', 'Google Play Console', 'App Store Connect', 'REST APIs']
+      technologies: ['React Native', 'Aplicativos móveis', '.NET', 'C#', 'SQL Server'],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 3,
+      date: 'Mar, 2022',
+      title: 'Software Engineer II',
+      company: 'Juntos Campus',
+      location: 'Itanhandu, Minas Gerais, Brasil',
+      type: 'work',
+      duration: 'Fev 2021 - Abr 2023 · 2 anos 3 meses',
+      description: 'Desenvolvimento de APIs e integração de sistemas com foco em análise e modelagem de dados.',
+      achievements: [
+        'Análise e interpretação de informações para tomada de decisão',
+        'Desenvolvimento de APIs',
+        'Integração de sistemas',
+        'Levantamento e modelagem de dados'
+      ],
+      technologies: ['Apache Cordova', 'Aplicativos móveis', '.NET', 'C#'],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 4,
+      date: 'Set, 2021',
+      title: 'Software Engineer',
+      company: 'Usecorp.co',
+      location: 'São Paulo, Brasil',
+      type: 'work',
+      duration: 'Set 2021 - Abr 2026 · 4 anos 8 meses',
+      description: 'Desenvolvimento e manutenção de aplicativos mobile com React Native. Bens por assinatura - plataforma que conecta milhares de fornecedores.',
+      achievements: [
+        'Desenvolvimento de aplicativos móveis em React Native',
+        'Integração com APIs REST',
+        'Publicação e manutenção na App Store e Google Play',
+        'Otimização de performance de aplicações mobile'
+      ],
+      technologies: ['React Native', 'TypeScript', 'REST APIs', 'Firebase'],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 5,
+      date: 'Out, 2020',
+      title: 'Software Engineer I',
+      company: 'Juntos Campus',
+      location: 'Itanhandu, Minas Gerais, Brasil',
+      type: 'work',
+      duration: 'Out 2020 - Jan 2021 · 4 meses',
+      description: 'Desenvolvimento de software, sistemas web e aplicativos híbridos. Criação de Landing Pages e customização de sistemas.',
+      achievements: [
+        'Desenvolvimento de software, sistemas web e aplicativos híbridos',
+        'Criação de Landing Pages e integração de templates ao framework interno',
+        'Customização e correções em sistemas já existentes',
+        'Testes de endpoints em APIs'
+      ],
+      technologies: ['Apache Cordova', 'Aplicativos móveis', 'JavaScript', 'HTML/CSS'],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 6,
+      date: 'Mar, 2020',
+      title: 'Estagiário - Setor Zoonoses',
+      company: 'Prefeitura de Cruzeiro',
+      location: 'Cruzeiro, São Paulo',
+      type: 'work',
+      duration: 'Mar 2020 - Nov 2020 · 9 meses',
+      description: 'Atuação em campo e atendimento ao público com foco em controle de vetores e monitoramento de dados epidemiológicos.',
+      achievements: [
+        'Atendimento ao público',
+        'Atuação em campo com visitas domiciliares para inspeção e orientação sobre controle de vetores',
+        'Digitalização e organização de documentos e formulários de controle',
+        'Registro e monitoramento de dados epidemiológicos'
+      ],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 7,
+      date: 'Jul, 2021',
+      title: 'Análise e Desenvolvimento de Sistemas',
+      company: 'Fatec Cruzeiro - Prof. Waldomiro May',
+      location: 'Cruzeiro, São Paulo',
+      type: 'education',
+      duration: '2018 - Jul 2021',
+      description: 'Graduação em Análise e Desenvolvimento de Sistemas com foco em desenvolvimento de software, banco de dados e engenharia de software.',
+      icon: <GraduationCap className="w-6 h-6" />
+    },
+    {
+      id: 8,
+      date: 'Jun, 2018',
+      title: 'Técnico em Informática',
+      company: 'Etec Prof. Sant\'Ana de Castro',
+      location: 'Cruzeiro, São Paulo',
+      type: 'education',
+      duration: '2017 - 2018',
+      description: 'Curso técnico em Informática com conhecimentos em programação, redes e manutenção de computadores.',
+      icon: <GraduationCap className="w-6 h-6" />
     }
   ];
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'Full-time': return 'neon-aqua';
-      case 'Freelance': return 'neon-pink';
-      case 'Contract': return 'neon-blue';
+      case 'work': return 'neon-aqua';
+      case 'education': return 'neon-blue';
+      case 'break': return 'neon-pink';
       default: return 'gray-400';
     }
   };
 
+  const getTypeLabel = (type: string) => {
+    switch (type) {
+      case 'work': return 'Experiência';
+      case 'education': return 'Formação';
+      case 'break': return 'Pausa';
+      default: return '';
+    }
+  };
+
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="experience" className="py-20 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="grid grid-cols-12 gap-1 h-full">
+          {Array.from({ length: 144 }).map((_, i) => (
+            <div key={i} className="border border-neon-blue/20"></div>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold gradient-text mb-4">
-            Jornada Profissional
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+            <span className="gradient-text">Trajetória</span>{' '}
+            <span className="text-white">Profissional</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-aqua to-neon-pink mx-auto mb-6"></div>
           <p className="text-gray-300 font-fira max-w-2xl mx-auto">
-            Uma linha do tempo de crescimento, desafios e conquistas no desenvolvimento de software
+            Uma linha do tempo de crescimento, desafios e conquistas
           </p>
         </div>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-aqua via-neon-blue to-neon-pink"></div>
+          {/* Timeline Line - Central */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-aqua via-neon-blue to-neon-pink hidden md:block"></div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <div key={exp.id} className="relative animate-fade-in">
-                {/* Timeline Dot */}
-                <div className="absolute left-6 w-4 h-4 bg-neon-aqua rounded-full border-4 border-dark-primary animate-pulse-neon"></div>
+          <div className="space-y-8">
+            {experiences.map((exp, index) => {
+              const isLeft = index % 2 === 0;
+              const color = getTypeColor(exp.type);
 
-                {/* Experience Card */}
-                <div className="ml-20 terminal-window">
-                  <div className="terminal-header">
-                    <div className="terminal-dots">
-                      <div className="terminal-dot bg-neon-aqua"></div>
-                      <div className="terminal-dot bg-neon-blue"></div>
-                      <div className="terminal-dot bg-neon-pink"></div>
+              return (
+                <div
+                  key={exp.id}
+                  className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  onClick={() => setSelectedExperience(exp)}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {/* Card */}
+                  <div className={`w-full md:w-5/12 ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
+                    <div className="group cursor-pointer p-6 rounded-lg border border-gray-800 bg-dark-secondary/50 hover:bg-dark-secondary transition-all duration-300 hover:border-neon-aqua/50 hover:shadow-lg hover:shadow-neon-aqua/20">
+                      <div className={`flex items-start ${isLeft ? 'md:flex-row-reverse md:justify-end' : ''} gap-4 mb-3`}>
+                        <div className={`text-${color} p-3 rounded-lg bg-${color}/10 transition-transform duration-300 group-hover:scale-110`}>
+                          {exp.icon}
+                        </div>
+                        <div className={isLeft ? 'md:text-right' : ''}>
+                          <h3 className="text-lg font-orbitron font-bold text-white mb-1">
+                            {exp.title}
+                          </h3>
+                          <p className="text-sm font-fira text-neon-aqua mb-1">{exp.company}</p>
+                          <div className="flex items-center gap-2 text-xs text-gray-400 font-fira">
+                            <MapPin className="w-3 h-3" />
+                            <span>{exp.location}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-300 font-fira line-clamp-2">
+                        {exp.description}
+                      </p>
+                      <div className="mt-3 text-xs text-neon-pink font-fira">
+                        Clique para ver mais →
+                      </div>
                     </div>
-                    <div className="text-xs font-fira text-gray-400">{exp.company.toLowerCase().replace(/\s+/g, '_')}.md</div>
-                    <div className="flex items-center space-x-2">
-                      <span className={`px-2 py-1 rounded text-xs font-fira bg-${getTypeColor(exp.type)}/20 text-${getTypeColor(exp.type)}`}>
-                        {exp.type}
+                  </div>
+               
+                  {/* Date Badge */}
+                  <div className={`hidden md:block w-5/12 ${!isLeft ? 'text-right pr-8' : 'pl-8'}`}>
+                    <div className={`inline-block px-4 py-2 rounded-full ${
+                      exp.type === 'work' ? 'bg-neon-aqua' :
+                      exp.type === 'education' ? 'bg-neon-blue' :
+                      'bg-neon-pink'
+                    }`}>
+                      <span className="text-sm font-fira font-semibold text-dark-primary">
+                        {exp.date}
                       </span>
                     </div>
                   </div>
-
-                  <div className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-orbitron font-bold text-neon-aqua mb-1">
-                          {exp.role}
-                        </h3>
-                        <div className="text-lg text-white font-fira mb-2">{exp.company}</div>
-                        <div className="flex items-center space-x-4 text-sm text-gray-400 font-fira">
-                          <span>{exp.period}</span>
-                          <span>•</span>
-                          <span>{exp.location}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className="text-gray-300 font-fira text-sm mb-6 leading-relaxed">
-                      {exp.description}
-                    </p>
-
-                    <div className="mb-6">
-                      <h4 className="text-neon-blue font-fira font-semibold mb-3">Principais Conquistas:</h4>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="flex items-start text-gray-300 font-fira text-sm">
-                            <span className="w-2 h-2 bg-neon-pink rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-neon-pink font-fira font-semibold mb-3">Tecnologias Utilizadas:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, techIndex) => (
-                          <span
-                            key={tech}
-                            className={`px-3 py-1 rounded text-xs font-fira border transition-colors duration-300 ${techIndex % 3 === 0
-                              ? 'border-neon-aqua/50 text-neon-aqua hover:bg-neon-aqua/10'
-                              : techIndex % 3 === 1
-                                ? 'border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10'
-                                : 'border-neon-pink/50 text-neon-pink hover:bg-neon-pink/10'
-                              }`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Career Summary */}
-        <div className="mt-16 hud-panel animate-fade-in">
-          <div className="terminal-header mb-6">
-            <div className="terminal-dots">
-              <div className="terminal-dot bg-green-500"></div>
-              <div className="terminal-dot bg-yellow-500"></div>
-              <div className="terminal-dot bg-red-500"></div>
-            </div>
-            <div className="text-xs font-fira text-gray-400">career_summary.json</div>
-            <div className="w-16"></div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="p-6 bg-dark-primary/50 rounded">
-              <div className="text-4xl font-orbitron font-bold text-neon-aqua mb-3">5+</div>
-              <div className="text-gray-300 font-fira">Anos de Experiência</div>
-              <div className="text-xs text-gray-500 font-fira mt-2">Aprendizado Contínuo</div>
-            </div>
-            <div className="p-6 bg-dark-primary/50 rounded">
-              <div className="text-2xl font-orbitron font-bold text-neon-blue mb-3">Inteligência Artificial</div>
-              <div className="text-gray-300 font-fira">Automação & Eficiência</div>
-              <div className="text-xs text-gray-500 font-fira mt-2">Soluções inteligentes com IA para inovação e resultados</div>
-            </div>
-            <div className="p-6 bg-dark-primary/50 rounded">
-              <div className="text-4xl font-orbitron font-bold text-neon-pink mb-3">100%</div>
-              <div className="text-gray-300 font-fira">Clean Code</div>
-              <div className="text-xs text-gray-500 font-fira mt-2">Práticas sólidas e código limpo</div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      <Dialog open={!!selectedExperience} onOpenChange={() => setSelectedExperience(null)}>
+        <DialogContent className="max-w-3xl bg-dark-secondary border-neon-aqua/30 text-white max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <div className="flex items-start gap-4 mb-4">
+              <div className={`text-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'} p-4 rounded-lg bg-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'}/10`}>
+                {selectedExperience?.icon}
+              </div>
+              <div className="flex-1">
+                <DialogTitle className="text-2xl font-orbitron font-bold text-white mb-2">
+                  {selectedExperience?.title}
+                </DialogTitle>
+                <DialogDescription className="text-neon-aqua font-fira text-lg mb-2">
+                  {selectedExperience?.company}
+                </DialogDescription>
+                <div className="flex flex-wrap gap-4 text-sm text-gray-400 font-fira">
+                  <div className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    {selectedExperience?.location}
+                  </div>
+                  {selectedExperience?.duration && (
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {selectedExperience.duration}
+                    </div>
+                  )}
+                  <span className={`px-3 py-1 rounded-full bg-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'}/20 text-${selectedExperience ? getTypeColor(selectedExperience.type) : 'neon-aqua'} text-xs font-semibold`}>
+                    {selectedExperience ? getTypeLabel(selectedExperience.type) : ''}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </DialogHeader>
+
+          <div className="space-y-6 mt-6">
+            <div>
+              <h4 className="text-neon-blue font-fira font-semibold mb-3">Descrição:</h4>
+              <p className="text-gray-300 font-fira leading-relaxed">
+                {selectedExperience?.description}
+              </p>
+            </div>
+
+            {selectedExperience?.achievements && selectedExperience.achievements.length > 0 && (
+              <div>
+                <h4 className="text-neon-blue font-fira font-semibold mb-3">Principais Atividades:</h4>
+                <ul className="space-y-2">
+                  {selectedExperience.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start text-gray-300 font-fira text-sm">
+                      <span className="w-2 h-2 bg-neon-pink rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {selectedExperience?.technologies && selectedExperience.technologies.length > 0 && (
+              <div>
+                <h4 className="text-neon-pink font-fira font-semibold mb-3">Tecnologias:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedExperience.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 rounded border border-neon-aqua/50 text-neon-aqua text-xs font-fira hover:bg-neon-aqua/10 transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

@@ -4,6 +4,7 @@ import Experience from '@/pages/sections/Experience';
 import Hero from '@/pages/sections/Hero';
 import Kode from '@/pages/sections/Kode';
 import Navigation from '@/pages/sections/Navigation';
+import Passions from '@/pages/sections/Passions';
 import Skills from '@/pages/sections/Skills';
 import Projects from '@/pages/sections/Projects';
 import Education from '@/pages/sections/Education';
@@ -47,10 +48,11 @@ export default function Home() {
             <Hero />
             <Kode onPress={keyHandler} sequence={sequence} />
             <About />
-            <Skills />
+            <Passions />
+            {/* <Skills /> */}
             <Experience />
             <Projects />
-            <Education />
+            {/* <Education /> */}
             <Testimonials />
             <Contact />
             <Footer />

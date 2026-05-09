@@ -1,6 +1,6 @@
 
 import profileImg from "@/assets/images/profile.jpg";
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
@@ -66,6 +66,8 @@ const Hero = () => {
                 { n: "position", v: "Engenheiro de Software Senior" },
                 { n: "email", v: "jhonatan.sont@gmail.com" },
                 { n: "degree", v: "Análise e Desenvolvimento de Sistemas" },
+                { n: "skills", v: "React Native | React | .NET | C#" },
+                { n: "location", v: "Piquete/SP, Brasil" },
               ].map((item, i) => (
                 <div key={i}>
                   <span className="text-dev-bluelight mr-1">{item.n}:</span>
@@ -101,13 +103,6 @@ const Hero = () => {
             <Linkedin className="w-5 h-5 text-neon-blue group-hover:animate-pulse" />
             <span className="font-fira text-sm">LinkedIn</span>
           </a>
-          {/* <a
-            href="mailto:jhonatan@example.com"
-            className="group flex items-center space-x-2 px-6 py-3 neon-border hover:bg-neon-pink/10 transition-all duration-300"
-          >
-            <Mail className="w-5 h-5 text-neon-pink group-hover:animate-pulse" />
-            <span className="font-fira text-sm">Contact</span>
-          </a> */}
         </div>
       </div>
     </section>
