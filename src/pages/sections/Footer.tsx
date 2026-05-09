@@ -4,12 +4,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
+    { name: 'Home', href: '#hero' },
     { name: 'Sobre', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experiência', href: '#experience' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Educação', href: '#education' },
-    { name: 'Contato', href: '#contact' }
+    { name: 'Interesses', href: '#passions' },
+    { name: 'Trajetória', href: '#experience' },
+    { name: 'Projetos', href: '#projects' }
   ];
 
   const socialLinks = [

@@ -46,15 +46,13 @@ export default function Home() {
           <main className="relative z-10">
             <Navigation />
             <Hero />
-            <Kode onPress={keyHandler} sequence={sequence} />
+            {/* <Kode onPress={keyHandler} sequence={sequence} /> */}
             <About />
             <Passions />
-            {/* <Skills /> */}
             <Experience />
             <Projects />
-            {/* <Education /> */}
-            <Testimonials />
-            <Contact />
+            {/* <Testimonials /> */}
+            {/* <Contact /> */}
             <Footer />
           </main>
         )}

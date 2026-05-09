@@ -48,6 +48,7 @@ const Projects = () => {
         { href: 'https://www.juntoscampus.com/', title: 'Website' },
       ]
     }
+    
   ];
 
   const selectedProjectData = projects.find(p => p.id === selectedProject);
@@ -65,73 +66,72 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Compact Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="terminal-window group hover:scale-[1.02] transition-all duration-300 animate-fade-in cursor-pointer"
-              style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => setSelectedProject(project.id)}
-            >
-              <div className="terminal-header">
-                <div className="terminal-dots">
-                  <div className="terminal-dot bg-neon-aqua"></div>
-                  <div className="terminal-dot bg-neon-blue"></div>
-                  <div className="terminal-dot bg-neon-pink"></div>
-                </div>
-                <div className="text-xs font-fira text-gray-400">
-                  {project.title.toLowerCase().replace(/\s+/g, '_')}.md
-                </div>
-                <div className="w-16"></div>
+        {/* Inventory Grid - Game Style */}
+        <div className="mx-auto">
+          {/* Inventory Header */}
+          <div className="bg-gradient-to-r from-dark-secondary to-dark-primary border border-neon-aqua/30 rounded-t-lg p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-neon-aqua/20 border border-neon-aqua rounded flex items-center justify-center">
+                <span className="text-neon-aqua font-orbitron font-bold text-sm">{projects.length}</span>
               </div>
-
-              <div className="p-4">
-                {/* Compact Project Image */}
-                <div className="w-full h-32 rounded mb-3 overflow-hidden relative">
-                  <img
-                    src={`/portfolio/src/assets/images/${project.image}`}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 pointer-events-none`}></div>
-                </div>
-
-                <h3 className="text-lg font-orbitron font-bold text-neon-aqua mb-2">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-400 font-fira text-xs mb-3 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Platforms */}
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {project.platforms.slice(0, 2).map((platform) => (
-                    <span
-                      key={platform}
-                      className="px-2 py-0.5 rounded text-[10px] font-fira border border-neon-pink/50 text-neon-pink"
-                    >
-                      {platform}
-                    </span>
-                  ))}
-                  {project.platforms.length > 2 && (
-                    <span className="px-2 py-0.5 rounded text-[10px] font-fira text-gray-500">
-                      +{project.platforms.length - 2}
-                    </span>
-                  )}
-                </div>
-
-                {/* View More Button */}
-                <button
-                  className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded bg-neon-aqua/10 hover:bg-neon-aqua/20 text-neon-aqua border border-neon-aqua/30 hover:border-neon-aqua transition-all text-xs font-fira group-hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]"
-                >
-                  <Eye className="w-3 h-3" />
-                  <span>VER DETALHES</span>
-                </button>
+              <div>
+                <h3 className="font-orbitron text-sm text-neon-aqua uppercase tracking-wider">Projetos</h3>
+                <p className="font-fira text-xs text-gray-400">Selecione um item para ver detalhes</p>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Inventory Slots */}
+          <div className="bg-black/40 border-x border-b border-neon-aqua/30 rounded-b-lg p-6">
+            <div className="grid grid-cols-3 gap-4">
+              {projects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="inventory-slot group cursor-pointer animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => setSelectedProject(project.id)}
+                >
+                  {/* Item Image */}
+                  <div className="relative w-full aspect-square overflow-hidden rounded">
+                    <img
+                      src={`/portfolio/src/assets/images/${project.image}`}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 pointer-events-none transition-opacity duration-300 group-hover:opacity-40`}></div>
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <Eye className="w-6 h-6 text-neon-aqua mx-auto mb-1" />
+                        <span className="text-neon-aqua text-xs font-fira font-bold uppercase">Examinar</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Item Name */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-3 pt-10">
+                    <h3 className="font-orbitron text-sm font-bold text-neon-aqua leading-tight line-clamp-2">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-1 mt-1.5 flex-wrap">
+                      {project.technologies.slice(0, 2).map((tech, idx) => (
+                        <span key={tech} className="text-xs text-gray-400 font-fira">
+                          {tech}{idx === 0 && project.technologies.length > 1 ? ',' : ''}
+                        </span>
+                      ))}
+                      {project.technologies.length > 2 && (
+                        <span className="text-xs text-gray-500 font-fira">+{project.technologies.length - 2}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Rarity Border Glow */}
+                  <div className={`absolute inset-0 rounded border-2 border-transparent group-hover:border-neon-aqua transition-all duration-300 pointer-events-none group-hover:shadow-[0_0_20px_rgba(0,255,198,0.5)]`}></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Project Details Modal */}
@@ -139,23 +139,6 @@ const Projects = () => {
           <DialogContent className="max-w-4xl bg-[#0a0a0a] border-neon-aqua/30 text-white p-0 overflow-hidden">
             {selectedProjectData && (
               <div className="relative">
-                {/* Terminal Header */}
-                <div className="terminal-header border-b border-neon-aqua/20">
-                  <div className="terminal-dots">
-                    <div className="terminal-dot bg-neon-aqua"></div>
-                    <div className="terminal-dot bg-neon-blue"></div>
-                    <div className="terminal-dot bg-neon-pink"></div>
-                  </div>
-                  <div className="text-xs font-fira text-gray-400">
-                    {selectedProjectData.title.toLowerCase().replace(/\s+/g, '_')}.details
-                  </div>
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="terminal-dot bg-red-500 hover:bg-red-400 transition-colors"
-                  >
-                    <X className="w-2 h-2" />
-                  </button>
-                </div>
 
                 <div className="grid md:grid-cols-2 gap-6 p-6">
                   {/* Left Column - Image and Basic Info */}
