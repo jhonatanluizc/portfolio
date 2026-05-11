@@ -18,25 +18,25 @@ export default function Home() {
   const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
   const [sequence, setSequence] = useState<string[]>([]);
 
-  const updateSequence = useCallback((key: string) => {
-    if (!konamiCode.includes(key)) return;
-    const newSequence = [...sequence, key].slice(-konamiCode.length);
-    setSequence(newSequence);
-    if (newSequence.join(',') === konamiCode.join(',')) {
-      setShowEasterEgg(true);
-      setSequence([]);
-    }
-  }, [sequence, konamiCode]);
+  // const updateSequence = useCallback((key: string) => {
+  //   if (!konamiCode.includes(key)) return;
+  //   const newSequence = [...sequence, key].slice(-konamiCode.length);
+  //   setSequence(newSequence);
+  //   if (newSequence.join(',') === konamiCode.join(',')) {
+  //     setShowEasterEgg(true);
+  //     setSequence([]);
+  //   }
+  // }, [sequence, konamiCode]);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      updateSequence(event.code);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [updateSequence]);
+  // useEffect(() => {
+  //   const handleKeyDown = (event: KeyboardEvent) => {
+  //     updateSequence(event.code);
+  //   };
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => window.removeEventListener('keydown', handleKeyDown);
+  // }, [updateSequence]);
 
-  const keyHandler = (key: string) => updateSequence(key);
+  // const keyHandler = (key: string) => updateSequence(key);
 
   return (
     <div className="min-h-screen bg-dark-primary text-white relative overflow-x-hidden">
