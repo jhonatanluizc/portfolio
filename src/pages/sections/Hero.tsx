@@ -1,5 +1,4 @@
-
-import profileImg from "@/assets/images/profile.jpg";
+import profileImg from "@/assets/images/profile.png";
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -35,14 +34,56 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         {/* Profile Image */}
         <div className="mb-8 relative inline-block">
-          <div className="w-48 h-48 mx-auto rounded-full border-4 border-neon-aqua neon-border overflow-hidden">
-            <img
-              src={profileImg}
-              alt="Jhonatan Luiz Chagas"
-              className="w-full h-full object-cover"
-            />
+          <div className="relative">
+            {/* Outer glow with pulse animation */}
+            <div className="absolute -inset-4 rounded-full bg-neon-aqua/15 blur-md animate-pulse"></div>
+
+            {/* Image container with border */}
+            <div className="relative w-48 h-48 mx-auto rounded-full border-4 border-neon-aqua overflow-hidden bg-gradient-to-br from-dark-secondary to-black">
+
+              {/* Fallout terminal texture background */}
+              <div className="absolute inset-0 z-0 overflow-hidden opacity-25 font-mono text-[11px] leading-[1.1] text-[#39FF14] select-none pointer-events-none">
+                <div className="absolute inset-0 flex flex-col gap-0 px-0.5 pt-0.5">
+                    {Array.from({ length: 15 }).map((_, rowIdx) => {
+                      const words = ['POOL','ROAM','SEEK','DEAN','DESSA','HALF','WORD','COPY','COLD','PICK','DIED','NEW','SEND','MSS','FEND','ENTRY','DENIED','LIKENESS','REMAIN','ATTEMPT'];
+                      const symbols = '!@#$%^&*()[]{}<>?/|-=+_.,:;'.split('');
+                      function randSymbols(len) {
+                        let out = '';
+                        for (let i = 0; i < len; i++) {
+                          out += symbols[Math.floor(Math.random()*symbols.length)];
+                        }
+                        return out;
+                      }
+                      function randWord() {
+                        return words[Math.floor(Math.random()*words.length)];
+                      }
+                      function randHex() {
+                        return '0x' + Math.floor(Math.random()*65536).toString(16).toUpperCase().padStart(4, '0');
+                      }
+                      // Fallout: alternando hex símbolos hex símbolos...
+                      const blockLen = 12;
+                      const word = randWord();
+                      const beforeLen = Math.floor(Math.random() * (blockLen - word.length));
+                      const afterLen = blockLen - word.length - beforeLen;
+                      const symbolBlock = `${randSymbols(beforeLen)}${word}${randSymbols(afterLen)}`;
+                      
+                      const line = `${randHex()} ${symbolBlock} ${randHex()} ${symbolBlock} ${randHex()}`;
+                      return (
+                        <div key={rowIdx} className="w-full overflow-hidden whitespace-nowrap opacity-100">
+                          {line}
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+              <img
+                src={profileImg}
+                alt="Jhonatan Luiz Chagas"
+                className="w-full h-full object-cover relative z-10"
+              />
+            </div>
+            
           </div>
-          <div className="absolute -inset-2 rounded-full border border-neon-pink/30 animate-pulse-neon"></div>
         </div>
 
         {/* Terminal Window */}
