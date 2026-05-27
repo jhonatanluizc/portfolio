@@ -12,6 +12,8 @@ import Testimonials from '@/pages/sections/Testimonials';
 import Contact from '@/pages/sections/Contact';
 import Footer from '@/pages/sections/Footer';
 import { useEffect, useState, useRef, useCallback } from 'react';
+import SkillTree from '@/pages/sections/SkillTree';
+import Technologies from '@/pages/sections/Technologies';
 
 export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
@@ -48,11 +50,14 @@ export default function Home() {
             <Hero />
             {/* <Kode onPress={keyHandler} sequence={sequence} /> */}
             <About />
-            <Passions />
+            {/* <Passions /> */}
+            <Technologies />
+            <SkillTree />
             <Experience />
             <Projects />
             {/* <Testimonials /> */}
             {/* <Contact /> */}
+
             <Footer />
           </main>
         )}
