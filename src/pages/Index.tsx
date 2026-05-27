@@ -1,19 +1,14 @@
 import About from '@/pages/sections/About';
 import EasterEgg from '@/pages/sections/EasterEgg';
 import Experience from '@/pages/sections/Experience';
-import Hero from '@/pages/sections/Hero';
-import Kode from '@/pages/sections/Kode';
-import Navigation from '@/pages/sections/Navigation';
-import Passions from '@/pages/sections/Passions';
-import Skills from '@/pages/sections/Skills';
-import Projects from '@/pages/sections/Projects';
-import Education from '@/pages/sections/Education';
-import Testimonials from '@/pages/sections/Testimonials';
-import Contact from '@/pages/sections/Contact';
 import Footer from '@/pages/sections/Footer';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import Hero from '@/pages/sections/Hero';
+import Navigation from '@/pages/sections/Navigation';
+import Projects from '@/pages/sections/Projects';
 import SkillTree from '@/pages/sections/SkillTree';
 import Technologies from '@/pages/sections/Technologies';
+import { useState } from 'react';
+import sections from '@/constants/sections';
 
 export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
@@ -47,17 +42,7 @@ export default function Home() {
         (
           <main className="relative z-10">
             <Navigation />
-            <Hero />
-            {/* <Kode onPress={keyHandler} sequence={sequence} /> */}
-            <About />
-            {/* <Passions /> */}
-            <Technologies />
-            <SkillTree />
-            <Experience />
-            <Projects />
-            {/* <Testimonials /> */}
-            {/* <Contact /> */}
-
+            {sections.map(section => (<div key={section.id} > {section.component} </div>))}
             <Footer />
           </main>
         )}
