@@ -8,7 +8,8 @@ const Navigation = () => {
   const navItems = [
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'Sobre' },
-    { id: 'passions', label: 'Interesses' },
+    { id: 'skill-tree', label: 'Habilidades' },
+    // { id: 'passions', label: 'Interesses' },
     { id: 'experience', label: 'Trajetória' },
     { id: 'projects', label: 'Projetos' }
   ];
