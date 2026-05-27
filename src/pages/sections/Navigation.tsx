@@ -1,18 +1,12 @@
 
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import sections from '@/constants/sections';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
-  const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'Sobre' },
-    { id: 'skill-tree', label: 'Habilidades' },
-    // { id: 'passions', label: 'Interesses' },
-    { id: 'experience', label: 'Trajetória' },
-    { id: 'projects', label: 'Projetos' }
-  ];
+  const navItems = sections;
 
   useEffect(() => {
     const handleScroll = () => {

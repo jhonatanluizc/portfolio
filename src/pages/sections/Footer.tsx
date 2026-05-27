@@ -1,15 +1,13 @@
 import { Github, Linkedin, Mail, Heart, Code } from 'lucide-react';
+import sections from '@/constants/sections';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Interesses', href: '#passions' },
-    { name: 'Trajetória', href: '#experience' },
-    { name: 'Projetos', href: '#projects' }
-  ];
+  const quickLinks = sections.map(section => ({
+    name: section.label,
+    href: section.href
+  }));
 
   const socialLinks = [
     {
@@ -46,7 +44,7 @@ const Footer = () => {
               Jhonatan Luiz
             </h3>
             <p className="text-gray-400 font-fira text-sm leading-relaxed mb-4">
-              Engenheiro de Software Sênior especializado em React Native, React e .NET. 
+              Engenheiro de Software Sênior especializado em React Native, React e .NET.
               Transformando ideias em soluções digitais de alta qualidade.
             </p>
             <div className="flex items-center space-x-2 text-neon-aqua">
