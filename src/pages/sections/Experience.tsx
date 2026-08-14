@@ -141,6 +141,25 @@ const Experience = () => {
     },
     {
       id: 8,
+      date: 'Ago, 2019',
+      title: 'Professor de Informática',
+      company: 'Pastoral da Criança',
+      location: 'Cruzeiro, São Paulo',
+      type: 'work',
+      duration: 'Jan 2018 - Ago 2019 · 1 ano 8 meses',
+      description: 'Voluntário na promoção da inclusão social no universo da informática, compartilhando conhecimentos de informática com pessoas dispostas a aprender.',
+      achievements: [
+        'Ensino de princípios básicos de informática',
+        'História e fundamentos do computador',
+        'Pacote Office (Word, Excel, PowerPoint)',
+        'Conceitos de Hardware e Software',
+        'Organização de dados e arquivos',
+        'Operação de programas básicos'
+      ],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      id: 9,
       date: 'Jun, 2018',
       title: 'Técnico em Informática',
       company: 'Etec Prof. Sant\'Ana de Castro',
