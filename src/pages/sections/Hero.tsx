@@ -107,7 +107,7 @@ const Hero = () => {
                 { n: "position", v: "Engenheiro de Software Senior" },
                 { n: "email", v: "jhonatan.sont@gmail.com" },
                 { n: "degree", v: "Análise e Desenvolvimento de Sistemas" },
-                { n: "skills", v: "React Native | React | .NET | C#" },
+                { n: "skills", v: "React Native | React | TypeScript | C# | .NET | Java | Spring Boot | AWS | Docker | CI/CD" },
                 { n: "location", v: "Piquete/SP, Brasil" },
               ].map((item, i) => (
                 <div key={i}>
